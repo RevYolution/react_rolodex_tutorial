@@ -1,3 +1,6 @@
+## Intention of this Repo
+The intention of this repo is to convey the basics of how to use React. It is based off the Udemey course found at [Compelete React Developer](https://www.udemy.com/share/101Wf4CUIScl5TQXw=/). The code within this repo can be used as a sequential learning tool. The code at the bottom of the file is the most advance and shows how a final working app will look like and perform. Contained above it a stepwise flow maybe follwed by uncommenting the code blocks to see how they perform one at a time. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
