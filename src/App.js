@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//------------------------------------------------ Start HERE---------------------------------------------//
 // The function below is used to kickstart our Application. What it does when called is return the html that is shown in the return statement. 
 // function App() {
 //   return (
@@ -24,6 +25,8 @@ import './App.css';
 //     </div>
 //   );
 // }
+
+//------------------------------------------------ Class Component Example----------------------------------------//
 
 // We can instead of using a function to return our desired html we can set up a class through Component. This allows use to use the state of the component. State is similar to props, but it is private and fully controlled by the component.
 // class App extends Component {
@@ -48,6 +51,8 @@ import './App.css';
 //     );
 //   }
 // }
+
+//------------------------------------------------Start of Rolodex App -----------------------------------------//
 
 //Here is where we are going to start really working on setting up our rolodex. 
 class App extends Component {
@@ -78,7 +83,15 @@ constructor() {
       <div className='App'>
       {
         // The .map() function used here will go through the monsters array and pick out the id and name setting those to the key and the text of the h1 element respectively. 
+        // More in depth the .map() function is going through the original array and creating a new array based off the callback function that is being called. React takes that array and displays it to the user as new elements added to the DOM. 
         this.state.monsters.map(monster => <h1 key={monster.id}> {monster.name} </h1>)
+
+        
+      }
+      
+      {
+        // Here we can see it does not matter how we affect the created array. But the .map() function will perform the given callback on each of the elements from the original array. 
+        this.state.monsters.map(monster => <h2 key={monster.id}>This is the { monster.name }</h2>)
       }
       </div>
   
