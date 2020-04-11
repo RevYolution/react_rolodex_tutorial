@@ -55,46 +55,72 @@ import './App.css';
 //------------------------------------------------Start of Rolodex App -----------------------------------------//
 
 //Here is where we are going to start really working on setting up our rolodex. 
-class App extends Component {
+// class App extends Component {
 
-constructor() {
-  super();
-//We set the state of the monsters array with objects that contain the name and an id. It is needed to have an id or a property that can be used as a key within the html so that if the element changes React knows where to go to make that change. 
-  this.state = {
-    monsters: [
-      {
-        name: "First name",
-        id:'ID1'
-      },
-      {
-        name:'Second name',
-        id: 'ID2'
-      },
-      {
-        name:'Thrid name',
-        id: 'ID3'
-      }
-    ]
-  }
-}
+// constructor() {
+//   super();
+// //We set the state of the monsters array with objects that contain the name and an id. It is needed to have an id or a property that can be used as a key within the html so that if the element changes React knows where to go to make that change. 
+//   this.state = {
+//     monsters: [
+//       {
+//         name: "First name",
+//         id:'ID1'
+//       },
+//       {
+//         name:'Second name',
+//         id: 'ID2'
+//       },
+//       {
+//         name:'Thrid name',
+//         id: 'ID3'
+//       }
+//     ]
+//   }
+// }
 
-  render() {
-    return (
-      <div className='App'>
-      {
-        // The .map() function used here will go through the monsters array and pick out the id and name setting those to the key and the text of the h1 element respectively. 
-        // More in depth the .map() function is going through the original array and creating a new array based off the callback function that is being called. React takes that array and displays it to the user as new elements added to the DOM. 
-        this.state.monsters.map(monster => <h1 key={monster.id}> {monster.name} </h1>)
+//   render() {
+//     return (
+//       <div className='App'>
+//       {
+//         // The .map() function used here will go through the monsters array and pick out the id and name setting those to the key and the text of the h1 element respectively. 
+//         // More in depth the .map() function is going through the original array and creating a new array based off the callback function that is being called. React takes that array and displays it to the user as new elements added to the DOM. 
+//         this.state.monsters.map(monster => <h1 key={monster.id}> {monster.name} </h1>)
 
         
-      }
+//       }
       
-      {
-        // Here we can see it does not matter how we affect the created array. But the .map() function will perform the given callback on each of the elements from the original array. 
-        this.state.monsters.map(monster => <h2 key={monster.id}>This is the { monster.name }</h2>)
+//       {
+//         // Here we can see it does not matter how we affect the created array. But the .map() function will perform the given callback on each of the elements from the original array. 
+//         this.state.monsters.map(monster => <h2 key={monster.id}>This is the { monster.name }</h2>)
+//       }
+//       </div>
+  
+//     )
+//   }
+// }
+//------------------------------------------------Fetching Data -----------------------------------------//
+
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      monsters:[]
+    }
+    
+  }
+  componentDidMount() {
+    fetch('http://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => this.setState({ monsters:users }))
+    //.then(users => console.log(users));
+  }
+  render() {
+    return (
+      <div className = 'App'>
+      {this.state.monsters.map(monster => (<h1 key = {monster.id}>{monster.name}</h1>
+        ))
       }
       </div>
-  
     )
   }
 }
