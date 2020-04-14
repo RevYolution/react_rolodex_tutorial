@@ -1,6 +1,9 @@
 //These are our import statements. They hold the information that we need within the statements so we can use them later. They also allow the file to use anything that is imported this way. 
 import React, {Component} from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
+
+import { CardList } from './components/card-list/card-list.component';
+
 import './App.css';
 
 //------------------------------------------------ Start HERE---------------------------------------------//
@@ -100,13 +103,39 @@ import './App.css';
 // }
 //------------------------------------------------Fetching Data -----------------------------------------//
 
+// // We are normally not going to be hard coding any data into our applications. As a result we normally relay on outside data from APIs or our own server that holds the data that we want. Here we show how that is possible with life cycle method of componentDidMount(). This method is fired as soon as the DOM mounts our application. 
+// class App extends Component {
+//   constructor(){
+//     super();
+//     this.state = {
+//       monsters:[]
+//     }
+//   }
+//   // Contained below we see the logic that we want to execute once the componentDidMount() method gets called. We utilize the fetch() call to a website that holds the data that we would like to render to our page. Once we get a response we use make sure that the response is in a format that we can want which is json. This is handled by the .json() method. The last step is to set the state of our monsters array to the data that we have received from the outside site.  
+//   componentDidMount() {
+//     fetch('http://jsonplaceholder.typicode.com/users')
+//     .then(response => response.json())
+//     .then(users => this.setState({ monsters:users }))
+//     //.then(users => console.log(users));
+//   }
+//   render() {
+//     return (
+//       <div className = 'App'>
+//       {this.state.monsters.map(monster => (<h1 key = {monster.id}>{monster.name} lives in {monster.address.city}</h1>))
+//       }
+//       </div>
+//     )
+//   }
+// }
+
+//------------------------------------------------Building Components -----------------------------------------//
+// We will now be working to compartmentalize our application thorough components. Components are the backbone of what makes a good React app. We want to build components that handle a single task or job and can be reused throughout our code base.  
 class App extends Component {
   constructor(){
     super();
     this.state = {
       monsters:[]
     }
-    
   }
   componentDidMount() {
     fetch('http://jsonplaceholder.typicode.com/users')
@@ -117,12 +146,19 @@ class App extends Component {
   render() {
     return (
       <div className = 'App'>
-      {this.state.monsters.map(monster => (<h1 key = {monster.id}>{monster.name}</h1>
-        ))
+      {/* The code below is being handled within our App.js. which can be fine. However, when building out our app we want to make sure that the component that is going to be responsible for the handling of generating the information.*/  
       }
+      {/*<CardList>
+      {this.state.monsters.map(monster => (<h1 key = {monster.id}>{monster.name} lives in {monster.address.city}</h1>))}
+      </CardList >*/
+      }
+      {/*Below we are transferring the information needed to handle the creation of the cards down to the CardList component as a property. */
+      }
+      <CardList monsters = {this.state.monsters} />
       </div>
     )
   }
 }
+
 
 export default App;
