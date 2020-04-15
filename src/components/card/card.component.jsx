@@ -2,7 +2,7 @@ import React from 'react';
 
 import './card.styles.css';
 
-// Our Card component is resposible for building how we want our Card to look. Once it is build it sends that jsx information up to the CardList which arranges it and then to the App.js which renders it. 
+// Our Card component is responsible for building how we want our Card to look. Once it is build it sends that jsx information up to the CardList which arranges it and then to the App.js which renders it. 
 export const Card = props => (
     <div className='card-container'>
     {
